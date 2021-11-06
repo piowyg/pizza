@@ -2,37 +2,36 @@ import '../styles/App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './Header';
 import Page from './Page';
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
+import {useDispatch } from "react-redux";
+import {bindActionCreators} from 'redux';
+import {actionCreators} from '../store'
 
 const App = () => {
 
-  const [pizzaList, setPizzaList] = useState([]);
+  const dispatch = useDispatch();
 
+  const {loadMenu} = bindActionCreators(actionCreators, dispatch);
   useEffect(() => {
-    fetch("http://localhost:4000/api/pizza")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("returned data", data);
-        return data;
-      })
-      .then((data) => setPizzaList(data));
-  }, []);
+      loadMenu("http://localhost:4000/api/pizza");
+  }, [loadMenu]);
+
 
   return (
-    <React.Fragment>
-      <Router>
-        <div className="app">
-          <header>
-            {<Header />}
-          </header>
-          <main>
-            <section className="page">
-              {<Page />}
-            </section>
-          </main>
-        </div>
-      </Router>
-      </React.Fragment>
+    <>
+        <Router>
+          <div className="app">
+            <header>
+              {<Header />}
+            </header>
+            <main>
+              <section className="page">
+                {<Page />}
+              </section>
+            </main>
+          </div>
+        </Router>
+    </>
   )
 }
 

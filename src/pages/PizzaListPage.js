@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/PizzaListPage.css';
-
-const products = ["margerita", "funghi", "capriciosa"];
+import { useSelector } from 'react-redux';
 
 const PizzaListPage = () => {
 
-  const list = products.map(product => (
-    <li key={product}>
-      <Link to={`/pizza/${product}`}>{product}</Link>
+  const pizzas = useSelector((state) => state.pizzas);
+
+  const list = pizzas.map(product => (
+    <li key={product.id}>
+      <Link to={`/pizza/${product.name}`}>{product.name}</Link>
     </li>
   ))
 
