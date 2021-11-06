@@ -28,7 +28,7 @@ const App = () => {
           </header>
           <main>
             <section className="page">
-              {<Page list={pizzaList} />}
+              {<Page />}
             </section>
           </main>
         </div>
