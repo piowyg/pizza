@@ -3,10 +3,24 @@ import '../styles/App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './Header';
 import Page from './Page';
+import { useState, useEffect } from "react";
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+
+  const [pizzaList, setPizzaList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/pizza")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("returned data", data);
+        return data;
+      })
+      .then((data) => setPizzaList(data));
+  }, []);
+
+  return (
+    <React.Fragment>
       <Router>
         <div className="app">
           <header>
@@ -14,13 +28,13 @@ class App extends Component {
           </header>
           <main>
             <section className="page">
-              {<Page />}
+              {<Page list={pizzaList} />}
             </section>
           </main>
         </div>
       </Router>
-    );
-  }
+      </React.Fragment>
+  )
 }
 
 export default App;

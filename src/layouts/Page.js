@@ -7,8 +7,7 @@ import PizzaListPage from '../pages/PizzaListPage';
 import SubmitPage from '../pages/SubmitPage';
 import OrderPage from '../pages/OrderPage';
 import ErrorPage from '../pages/ErrorPage';
-
-const Page = () => {
+const Page = (props) => {
   return (
     <>
       <Switch>

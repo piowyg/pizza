@@ -8,7 +8,7 @@ const PizzaListPage = () => {
 
   const list = products.map(product => (
     <li key={product}>
-      <Link to={`/product/${product}`}>{product}</Link>
+      <Link to={`/pizza/${product}`}>{product}</Link>
     </li>
   ))
 

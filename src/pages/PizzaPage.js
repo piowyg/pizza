@@ -8,7 +8,7 @@ const PizzaPage = ({ match }) => {
     <>
       <div>Strona pizzy</div>
       <Product id={match.params.id} />
-      <Link to="/products">Powrót do listy pizz</Link>
+      <Link to="/pizzas">Powrót do listy pizz</Link>
     </>
 
   );
