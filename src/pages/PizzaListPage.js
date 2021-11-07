@@ -24,7 +24,7 @@ const PizzaListPage = () => {
               x = element.name;
             }
           });
-          return (<li key={x}> {x} </li>
+          return (<li key={ingredient}> {x} </li>
             )
           })
         }
@@ -33,23 +33,27 @@ const PizzaListPage = () => {
     </li>
   ))
 
-  return (
+  if (pizzas.length !== 0) {
+    return (
     <>
-    <div className="pizzas">
-      <h1>Pizze</h1>
-      <div className="pizza_list">
-      <div className="img_wrapper"><img src={pizza_list} alt="pizza"></img></div>
-      <Loader
-        type="Bars" color="#00BFFF" height={80} width={80}
-        timeout={1500} 
-      />
-        <ul>
-          {list}
-        </ul>
+      <div className="pizzas">
+        <h1>Pizze</h1>
+        <div className="pizza_list">
+        <div className="img_wrapper"><img src={pizza_list} alt="pizza"></img></div>
+          <ul>
+            {list}
+          </ul>
+        </div>
       </div>
-    </div>
-    </>
-  );
+    </>);
+  } else {
+    return (
+      <Loader
+      type="Bars" color="#00BFFF" height={80} width={80}
+      timeout={1500} 
+    />
+    )
+  }
 }
 
 export default PizzaListPage;
