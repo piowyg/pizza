@@ -2,6 +2,86 @@ li {
     list-style: none;
 }
 
+.pizza_list ul li div {
+    text-align: left;
+    margin: 0 auto;
+    width: 50%;
+    padding: 20px 0;
+    border-bottom: 2px solid white;
+}
+.pizza_list ul {
+    text-align: center;
+    -ms-flex-align: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #ffab45;
+    padding-bottom: 20px;
+}
+
 li a {
     text-decoration: none;
+}
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.img_wrapper {
+    margin: 25px 0;
+}
+
+.ingredients {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.ingredients li {
+    float: left;
+    color:#fafafa;
+    padding-right:10px;
+    font-size: 13px;
+}
+
+button {
+    float: right;
+    position: relative;
+    margin-right: 0px;
+    width: 90px;
+    color: #fff;
+    background-color: #ef8000;
+    border-color: #ef8000;
+    border-width: 2px;
+    margin-top: 10px;
+}
+
+button img {
+    width: 30%;
+    height: 30%;
+}
+
+.ingredients {
+    padding-top: 10px;
+}
+
+button span {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 550px) {
+    .ingredients {
+     display: none;
+  }
+
+  .pizza_list ul li div {
+    width: 80%;
+    }
+
+    button {
+        margin-top: -5px;
+    }
 }

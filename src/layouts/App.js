@@ -13,10 +13,14 @@ const App = () => {
 
   const {loadMenu} = bindActionCreators(actionCreators, dispatch);
   useEffect(() => {
-      loadMenu("http://localhost:4000/api/pizza");
+      loadMenu("http://localhost:3333/api/pizza");
   }, [loadMenu]);
 
 
+  const {loadIngredients} = bindActionCreators(actionCreators, dispatch);
+  useEffect(() => {
+    loadIngredients("http://localhost:3333/api/ingredient/");
+  }, [loadIngredients]);
   return (
     <>
         <Router>

@@ -7,7 +7,7 @@
   
   html {
     font-family: 'open sans', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #181A18;
     color: #fafafa;
     font-size: 20px;
   }
@@ -26,4 +26,19 @@
     width:  1100px;
     margin: 0 auto;
     text-align: center;
+}
+
+@media only screen and (max-width: 1100px) {
+  .app{
+    width: 100%;
+    max-width: 100%  ;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .app{
+    font-size: 16px;
+}
 }

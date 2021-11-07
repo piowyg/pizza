@@ -26,18 +26,18 @@ nav.main a:hover {
 }
 
 nav.main a.active {
-    border-left: 10px gray solid;
+    border-bottom: 10px gray solid;
     transform: translateX(0);
 }
 
 nav.main li:nth-child(1) a.active {
-    border-left-color: green;
+    border-bottom-color: green;
 }
 
 nav.main li:nth-child(2) a.active {
-    border-left-color: blue;
+    border-bottom-color: blue;
 }
 
 nav.main li:nth-child(3) a.active {
-    border-left-color: orange;
+    border-bottom-color: orange;
 }
