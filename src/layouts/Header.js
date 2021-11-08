@@ -17,11 +17,14 @@ const Header = () => {
       ))
     
       return (
-        <nav className="main">
-          <ul>
-            {menu}
-          </ul>
-        </nav>
+          <>
+          <img className = "logo" src="/logo.png" alt="logo"/>
+          <nav className="main">
+            <ul>
+              {menu}
+            </ul>
+          </nav>
+          </>
       );
     }
     

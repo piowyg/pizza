@@ -41,3 +41,18 @@ nav.main li:nth-child(2) a.active {
 nav.main li:nth-child(3) a.active {
     border-bottom-color: orange;
 }
+
+
+.logo{
+    display: block;
+    margin: 25px auto ;
+    text-align: center;
+    width: 450px;
+    height: 100px;
+}
+
+@media only screen and (max-width: 750px) {
+    .logo{
+      display: none;
+    }
+  }

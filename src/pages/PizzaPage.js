@@ -20,7 +20,6 @@ const PizzaPage = ({ match }) => {
     if (listToCopy.length !== 0) {
       return (
         <>
-          <div>Strona pizzy</div>
           <Product id={match.params.id} />
           <Link to="/pizzas">Powrót do listy pizz</Link>
         </>
