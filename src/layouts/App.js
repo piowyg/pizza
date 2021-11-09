@@ -19,7 +19,7 @@ const App = () => {
 
   const {loadIngredients} = bindActionCreators(actionCreators, dispatch);
   useEffect(() => {
-    loadIngredients("http://localhost:3333/api/ingredient/");
+    loadIngredients("http://localhost:4000/api/ingredient/");
   }, [loadIngredients]);
   return (
     <>
