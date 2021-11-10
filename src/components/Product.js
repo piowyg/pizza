@@ -3,6 +3,7 @@ import '../styles/Product.css';
 import { useSelector } from 'react-redux';
 import { translations } from '../dictionary/transaltions';
 import cart_pizza_list from '../images/cart.png';
+import edit from '../images/edit.png'
 
 const Product = (props) => {
   const pizza = "/pizze/" + props.id + ".png";
@@ -20,8 +21,9 @@ const Product = (props) => {
 
   const list = current_pizza.ingredients.map((product, index) => {
     return (
-    <li key={product.id}>
+    <li key={product}>
         {
+          // eslint-disable-next-line array-callback-return
           ingredients_store.map(element => {
             if (element.id === product) {
               return element.name  
@@ -38,13 +40,15 @@ const Product = (props) => {
       <article> {translations[props.id]}</article>
       <img src={pizza} alt={props.id} className="pizza_img"/>
 
-      <h2>Składniki</h2>
+      <h2>Składniki <button className="editButton"><img className = "edit" src={edit} alt="edytuj składniki"></img></button></h2>
       <ul className="ingredients_pizza_page">
         {list}
       </ul>
-      <button className="add_ingredient">Dodaj składnik </button>
-
-      <button className="add_ingredient"> <span>{current_pizza.price} zł</span> <img src={cart_pizza_list} alt="koszyk"></img></button>
+      <div className="submit_div">
+          <p> Jeśli masz ochotę na jakieś ekstra składniki kliknij w ołowek przy składnikach </p>
+          <p>To chyba najwyższa pora dodać pizze do koszyka :) </p>
+         <button className="add_pizza"> <span>{current_pizza.price} zł</span> <img src={cart_pizza_list} alt="koszyk"></img></button>
+      </div>
     </article>
 
   

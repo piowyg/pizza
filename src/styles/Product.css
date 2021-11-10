@@ -25,23 +25,43 @@ article {
     text-transform: capitalize;
 }
 
-.add_ingredient {
-    margin: 0 auto;
-    text-align: center;
-    display: block;
-    margin-top: 15px;
-    padding: 5px;
-    float: none;
-}
 
 h2 {
     color: #ffab45;
     margin-top: 20px;
 }
 
+.edit {
+    width: 30px;
+    height: 30px;
+}
+
+.submit_div {
+    display: inline-block;
+}
+
+.submit_div p {
+    margin-top: 30px;
+    font-size:14px;
+}
+
+.editButton {
+    float:none;
+    background-color: #181A18;
+    width: auto;
+    border-width: 0px;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 750px) {
     article{
         max-width: 70%;
         font-size: 13px;
+    }
+  }
+
+  @media only screen and (max-width: 550px) {
+    .editButton{
+        margin-top: auto;
     }
   }
