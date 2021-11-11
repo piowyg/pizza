@@ -3,7 +3,8 @@ import RecoommendedProduct from "./RecommendedProduct";
 
 const RecommendedSection = (props) => {
 
-    const shuffled = props.pizza.sort(() => 0.5 - Math.random());
+    const list = props.pizza.slice(0);
+    const shuffled = list.sort(() => 0.5 - Math.random());
     let selected = shuffled.slice(0, 3);
     
     return (

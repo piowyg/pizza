@@ -47,3 +47,12 @@ export const loadIngredients  = (url) => {
             });
     }
 };
+
+
+export const addToOrder = (order) => {
+
+    return {
+        type: "ADD_TO_ORDER",
+        order,
+    };
+}

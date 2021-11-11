@@ -1,21 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/PizzaListPage.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import pizza_list from '../images/pizza_list.jpg';
 import cart_pizza_list from '../images/cart.png';
 import Loader from "react-loader-spinner";
+import { addToOrder } from '../store/action-creators';
 
 const PizzaListPage = () => {
+  const dispatch = useDispatch();
 
   const pizzas = useSelector((state) => state.pizzas);
   const ingredients_store = useSelector((state) => state.ingredients);
 
+  const handleOrder = (pizza) =>{
+    let {id,price} = pizza
+    const pizza_order = {id,price,ingredients: [] }
+    dispatch(
+      addToOrder(pizza_order)   
+    )
+  }
   const list = pizzas.map((product, index) => (
     <li key={product.id}>
       <div>
       <Link to={`/pizza/${product.name}`}> {index+1 }. {product.name}</Link>
-      <button> <span>{product.price} zł</span> <img src={cart_pizza_list} alt="koszyk"></img></button>
+      <button onClick={() => handleOrder(product)}> <span>{product.price} zł</span> <img src={cart_pizza_list} alt="koszyk"></img></button>
       <ul className="ingredients">
         {product.ingredients.map(ingredient => {
           let x = ""
