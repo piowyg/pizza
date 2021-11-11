@@ -2,6 +2,7 @@ import React from 'react';
 import RecommendedSection from '../components/Recommended';
 import { useSelector } from 'react-redux';
 import Loader from "react-loader-spinner";
+import AboutUs from '../components/AboutUs';
 
 const HomePage = () => {
 
@@ -16,11 +17,8 @@ const HomePage = () => {
         return (
             <>
                 <RecommendedSection pizza={pizzas} />
-                {/* // <TODO>
-                //     - Polecane pizza 
-                //     - pobierac 3 losowe pizze i je wyswietlac wraz ze zdjeciami ( nazwa + zdjecie)
-                //     - sekcja o nas ( pelna easter eggow)
-                // </TODO> */}
+
+                <AboutUs/>
             </>
         );}
 }

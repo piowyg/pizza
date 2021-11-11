@@ -7,7 +7,7 @@ const RecommendedSection = (props) => {
     let selected = shuffled.slice(0, 3);
     
     return (
-        <div>
+        <div className="recommended">
             <h2>
                 Polecane pizze przez szefa kuchni
             </h2>

@@ -23,6 +23,10 @@
 :any-link {
 }
   
+.error_page a {
+  text-decoration: underline;
+  color: red;
+}
 
 .app{
     width:  1100px;
