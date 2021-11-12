@@ -6,12 +6,15 @@ import pizza_list from '../images/pizza_list.jpg';
 import cart_pizza_list from '../images/cart.png';
 import Loader from "react-loader-spinner";
 import { addToOrder } from '../store/action-creators';
+import { useState } from 'react';
+import Popup from '../components/Popup';
 
 const PizzaListPage = () => {
   const dispatch = useDispatch();
 
   const pizzas = useSelector((state) => state.pizzas);
   const ingredients_store = useSelector((state) => state.ingredients);
+  const [order, setOrder] = useState(false);
 
   const handleOrder = (pizza) =>{
     let {id,price} = pizza
@@ -19,7 +22,14 @@ const PizzaListPage = () => {
     dispatch(
       addToOrder(pizza_order)   
     )
+
+    setOrder(!order);
   }
+
+  const togglePopup_2 = () => {
+    setOrder(!order);
+  }
+
   const list = pizzas.map((product, index) => (
     <li key={product.id}>
       <div>
@@ -49,6 +59,13 @@ const PizzaListPage = () => {
         <h1>Pizze</h1>
         <div className="pizza_list">
         <div className="img_wrapper"><img src={pizza_list} alt="pizza"></img></div>
+        {order ? 
+          <Popup
+            text='Pizza została dodana do koszyka'
+            closePopup={togglePopup_2}
+          />
+          : null
+        }
           <ul>
             {list}
           </ul>

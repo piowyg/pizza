@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import "../styles/Header.css";
-
+import { useSelector } from 'react-redux';
 
 const list = [
     { name: "start", path: "/", exact: true },
@@ -10,9 +10,14 @@ const list = [
   ]
 
 const Header = () => {
+
+  const pizza_orders = useSelector((state) => state.pizza_orders);
+
     const menu = list.map(item => (
         <li key={item.name}>
-          <NavLink to={item.path} exact={item.exact ? item.exact : false}>{item.name}</NavLink>
+          <NavLink to={item.path} exact={item.exact ? item.exact : false}>{item.name ==="koszyk" && pizza_orders.pizza_orders.length >0
+           ? item.name + " ("+pizza_orders.pizza_orders.length +")" 
+           :item.name }</NavLink>
         </li>
       ))
     
