@@ -6,6 +6,7 @@ import saucesReducer from './saucesReducer'
 import sauceOstryReducer from './sauceOstryReducer'
 import sauceCzosnkowyReducer from './sauceCzosnkowyReducer'
 import sauceWyspReducer from './sauceWyspReducer'
+import summaryReducer from "./summaryReducer";
 
 const reducers = combineReducers({
     pizzas: menuReducer,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
     sauces_ostry: sauceOstryReducer,
     sauces_czosnkowy: sauceCzosnkowyReducer,
     sauces_wysp: sauceWyspReducer,
+    redirectToSummary: summaryReducer
 });
 
 export default reducers;

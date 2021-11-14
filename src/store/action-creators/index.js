@@ -113,3 +113,8 @@ export const actionCzosnkowy = (count) => ({
     count
   });
   
+  export const redirectToSummaryAction = (state) => ({
+    type: "REDIRECT_TO_SUMMARY",
+    state
+  });
+  

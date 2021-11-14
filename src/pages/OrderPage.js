@@ -4,11 +4,11 @@ import Loader from "react-loader-spinner";
 import { useSelector } from 'react-redux';
 import pizzaDictionary from '../dictionary/pizza_dictionary';
 import ingredientsDictionary from '../dictionary/ingredientsDictionary';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../styles/OrderPage.css';
 import { removeFromOrder } from '../store/action-creators';
 import { useState, useEffect } from 'react';
-import { actionCzosnkowy, actionOstry, actionWysp } from '../store/action-creators';
+import { actionCzosnkowy, actionOstry, actionWysp, redirectToSummaryAction } from '../store/action-creators';
 import FormValidationComponent from '../components/FormValidationComponent';
 
 const OrderPage = () => {
@@ -26,6 +26,7 @@ const OrderPage = () => {
     const [wysp, setWysp] = useState(useSelector((state) => state.sauces_wysp.count));
 
 
+    const [redirectToSummary, setRedirectToSummary] = useState(false);
 
     const pizzaDict = pizzaDictionary(pizzas);
     const ingredientsDict = ingredientsDictionary(ingredients);
@@ -101,6 +102,22 @@ const OrderPage = () => {
             .then((res) => res.json())
             .then((data) => console.log(data))
             .then(() => setIsPending(false))
+            .then(() => dispatch(
+              actionOstry(0)   
+            ))
+            .then(() => dispatch(
+              actionCzosnkowy(0)   
+            ))
+            .then(() => dispatch(
+              actionWysp(0)   
+            ))
+            .then(() =>  dispatch(
+              removeFromOrder([])   
+            ))
+            .then(() =>  dispatch(
+              redirectToSummaryAction(true)   
+            ))
+            .then(() => setRedirectToSummary(true))
             .catch((err) => console.log(err))
     };
 
@@ -207,6 +224,13 @@ const OrderPage = () => {
         </li>);
     })
 
+    if (redirectToSummary) {
+      return (
+        <>
+          <Redirect to="/summary" />
+        </>
+      )
+    }
     if (sauces.length !== 0) {
       if(orders.length !== 0 ) {
         return (
