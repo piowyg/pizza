@@ -9,7 +9,7 @@ const Popup = (props) => {
           <div className='popup_inner'>
             <h2>{props.text}</h2>
           <button className="close" onClick={() => props.closePopup()}><img src="/close.png" alt="close"/></button>
-          <img className="pogchamp" src="/pogchamp.png" alt="pogu"/>
+          <img className="pogchamp" src={props.pizza_name === "HAWAJSKA" ? "/biblethump.png" : '/pogchamp.png'} alt="pogu"/>
           <section>
               <div className="continue_shoping" onClick={() => props.closePopup()}>
                     Kontynuuj zakupy

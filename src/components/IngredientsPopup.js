@@ -13,7 +13,7 @@ const IngredientsPopup = (props) => {
                   props.list.map((product, index) => (
                       <li className="ingredients" key={product.id}>
                           <label className="ingredient_label">
-                              <input type="checkbox" checked={props.truthTable[index]} onChange={() => props.checkedFunction(index)}/>
+                              <input type="checkbox" checked={props.truthTable[index] || false} onChange={() => props.checkedFunction(index)}/>
                                <div> {product.name} </div>
                             </label>
                           </li>

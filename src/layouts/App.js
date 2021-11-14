@@ -21,6 +21,12 @@ const App = () => {
   useEffect(() => {
     loadIngredients("http://localhost:3333/api/ingredient/");
   }, [loadIngredients]);
+
+  const {loadSauces} = bindActionCreators(actionCreators, dispatch);
+  useEffect(() => {
+      loadSauces("http://localhost:3333/api/sauce");
+  }, [loadSauces]);
+
   return (
     <>
         <Router>

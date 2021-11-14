@@ -5,6 +5,11 @@ const reducer = (state = {pizza_orders: []}, action) => {
                 ...state,
                 pizza_orders: [...state.pizza_orders, action.order]
             }
+            case 'REMOVE_FROM_ORDER':
+                return {
+                    ...state,
+                    pizza_orders: action.order
+                }
         default:
             return state;
     }

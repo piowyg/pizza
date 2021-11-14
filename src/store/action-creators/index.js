@@ -48,6 +48,31 @@ export const loadIngredients  = (url) => {
     }
 };
 
+export const loadSauces  = (url) => {
+
+    const getMenu = async (url) => {
+        const response = await fetch(url);
+        return await response.json();
+    };
+
+    return (dispatch) => {
+        return getMenu(url)
+            .then(function(data) {
+                dispatch({
+                    type: 'LOAD_SAUCES',
+                    payload: data
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch({
+                    type: 'LOAD_SAUCES',
+                    payload: []
+                });
+            });
+    }
+};
+
 
 export const addToOrder = (order) => {
 
@@ -56,3 +81,35 @@ export const addToOrder = (order) => {
         order,
     };
 }
+
+export const removeFromOrder = (order) => {
+
+    return {
+        type: "REMOVE_FROM_ORDER",
+        order,
+    };
+}
+
+export const addSauce = (sauce) => {
+    
+    return {
+        type: "ADD_SAUCE",
+        sauce,
+    }
+}
+
+export const actionCzosnkowy = (count) => ({
+    type: "CZOSNKOWY",
+    count
+  });
+  
+  export const actionOstry = (count) => ({
+    type: "OSTRY",
+    count
+  });
+
+  export const actionWysp = (count) => ({
+    type: "1000_WYSP",
+    count
+  });
+  

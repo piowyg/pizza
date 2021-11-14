@@ -7,7 +7,6 @@ import edit from '../images/edit.png'
 import { useState } from 'react';
 import IngredientsPopup from './IngredientsPopup';
 import Popup from './Popup';
-import {useMemo } from "react";
 import { addToOrder } from '../store/action-creators';
 
 const Product = (props) => {
@@ -18,58 +17,47 @@ const Product = (props) => {
 
   const pizza = "/pizze/" + props.id + ".png";
 
-  const [state, setState] = useState(false);
-  const [order, setOrder] = useState(false);
-  const [ingredients_checked_label, setIngredientsCheckedState] = useState([]);
-  const [ingredients_to_cart, setIngredientsForCart] = useState([]);
-  const [list_extra_ingredients, setListExtraIngre] = useState([]);
-  const [ingredientsPrice, setIngredientsPrice] = useState(0);
-  
   let additionalIngredientsOnPizza = [];
   let current_pizza = []
   const ingredients = [];
   const based_ingredients_on_pizza = [];
 
 
+  const [state, setState] = useState(false);
+  const [order, setOrder] = useState(false);
+
   pizzas.forEach(element => {
-              if (element.name === props.id) {
-                current_pizza = element;
-              }
-            });
+    if (element.name === props.id) {
+      current_pizza = element;
+    }
+  });
 
-  const list = current_pizza.ingredients.map((product, index) => {
-    return (
-    <li key={product}>
-        {
-          // eslint-disable-next-line array-callback-return
-          ingredients_store.map(element => {
-            if (element.id === product) {
-              based_ingredients_on_pizza.push(element.name)
-              return element.name  
-            } else if (!ingredients.includes(element) ) {
-              ingredients.push(element);
-            }
-            }
-        )}
-    </li>)
+const list = current_pizza.ingredients.map((product, index) => {
+  return (
+  <li key={product}>
+  {
+    // eslint-disable-next-line array-callback-return
+    ingredients_store.map(element => {
+      if (element.id === product) {
+        based_ingredients_on_pizza.push(element.name)
+        return element.name  
+      } else if (!ingredients.includes(element) ) {
+        ingredients.push(element);
+      }
+      }
+  )}
+  </li>)
   })
-
+  
   let additionalIngredients = ingredients.filter( function( element ) {
     return !based_ingredients_on_pizza.includes( element.name );
   } );
 
-
-  const firstRender = useMemo(
-    () =>
-    {let temp = []
-      additionalIngredients.forEach(element => {
-        temp.push(false);});
-        setIngredientsCheckedState(temp);
-      }
-    ,
-    []
-  );
-
+  const [ingredients_checked_label, setIngredientsCheckedState] = useState([]);
+  const [ingredients_to_cart, setIngredientsForCart] = useState([]);
+  const [list_extra_ingredients, setListExtraIngre] = useState([]);
+  const [ingredientsPrice, setIngredientsPrice] = useState(0);
+  
   const togglePopup = () => {
     if (state) {
       let price = 0;
@@ -98,8 +86,12 @@ const Product = (props) => {
 
 
   const onChangeCheckedBox = (index) => {
-    ingredients_checked_label[index] = !ingredients_checked_label[index];
-    setIngredientsCheckedState(ingredients_checked_label)
+    setIngredientsCheckedState(prevState => {
+      let temp = [...prevState];
+
+      temp[index] = !temp[index];
+      return temp;
+    })
   }
 
   const handleOrder = (pizza) =>{
@@ -116,7 +108,6 @@ const Product = (props) => {
     )
     setOrder(!order);
   }
-
 
   return (
     <>
@@ -141,6 +132,7 @@ const Product = (props) => {
           <Popup
             text='Pizza została dodana do koszyka'
             closePopup={togglePopup_2}
+            pizza_name= {current_pizza.name}
           />
           : null
         }
