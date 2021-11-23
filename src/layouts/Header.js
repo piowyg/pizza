@@ -11,12 +11,17 @@ const list = [
 
 const Header = () => {
 
-  const pizza_orders = useSelector((state) => state.pizza_orders);
+    const pizza_orders = useSelector((state) => state.pizza_orders);
 
+    const ostry = useSelector((state) => state.sauces_ostry.count);
+    const czosnkowy = useSelector((state) => state.sauces_czosnkowy.count);
+    const wysp = useSelector((state) => state.sauces_wysp.count);
+
+    const itemsInCart = pizza_orders.pizza_orders.length + ostry + czosnkowy + wysp;
     const menu = list.map(item => (
         <li key={item.name}>
           <NavLink to={item.path} exact={item.exact ? item.exact : false}>{item.name ==="koszyk" && pizza_orders.pizza_orders.length >0
-           ? item.name + " ("+pizza_orders.pizza_orders.length +")" 
+           ? item.name + " ("+itemsInCart+")" 
            :item.name }</NavLink>
         </li>
       ))

@@ -28,7 +28,7 @@ const SummaryPage = () => {
         return (
             <div className="error_page">
             <h2>Dziekujemy za zamówienie</h2>
-            <img src="/summary.gif" alt="Thanks for order"  width="250" />
+            <img className="boxdel-gif" src="/boxdel.gif" alt="Thanks for order"/>
             <div className="redirect">
                 <style>{css} </style>
                 Zachęcam gorąco do powrotu do <Link to="/">strony głównej</Link>
